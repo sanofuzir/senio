@@ -33,17 +33,8 @@ class DefaultController extends Controller
         $results = $this->getQuestionnaireManager()->getQuestionnaireResults();
         $num_of_votes = $this->getQuestionnaireManager()->getNumOfVotes();
         
-        
-        /** 
-         * @var $highcharts \Gremo\HighchartsBundle\Highcharts 
-         */
-        $highcharts = $this->get('gremo_highcharts');
-        
-        $chart = $highcharts->newPieChart();
-        
         return array('results' => $results,
                      'num_of_votes' => $num_of_votes,
-                     'chart' => $chart,
                     );
         
     }
@@ -68,6 +59,24 @@ class DefaultController extends Controller
             if ($form->isValid()) {
                 $this->getQuestionnaireManager()->saveQuestionnaire($entity);
                 $this->get('session')->getFlashBag()->add('success', 'Vaš glas je bil uspešno shranjen!');
+                
+                $num_of_votes = $this->getQuestionnaireManager()->getNumOfVotes();
+                $results = $this->getQuestionnaireManager()->getQuestionnaireResults();
+                
+                $message = \Swift_Message::newInstance()
+                    ->setSubject('Rezultati ankete')
+                    ->setFrom('sano.fuzir@gmail.com')
+                    ->setTo($entity->getEmail())
+                    ->setBody(
+                $this->renderView(
+                'CoreBundle:Default:email.html.twig',
+                array('results' => $results,
+                      'num_of_votes' => $num_of_votes,
+                     )
+            )
+        )
+    ;
+    $this->get('mailer')->send($message);
                 return $this->redirect($this->generateUrl('_home'));
             }
         }

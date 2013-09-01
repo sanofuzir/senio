@@ -78,6 +78,7 @@
   'DoctrineBundle:Collector:db.html.twig' => '/Users/sanofuzir/Sites/senio/vendor/doctrine/doctrine-bundle/Doctrine/Bundle/DoctrineBundle/Resources/views/Collector/db.html.twig',
   'DoctrineBundle:Collector:explain.html.twig' => '/Users/sanofuzir/Sites/senio/vendor/doctrine/doctrine-bundle/Doctrine/Bundle/DoctrineBundle/Resources/views/Collector/explain.html.twig',
   'CoreBundle:Default:editQuestionnaire.html.twig' => '/Users/sanofuzir/Sites/senio/src/Senio/CoreBundle/Resources/views/Default/editQuestionnaire.html.twig',
+  'CoreBundle:Default:email.html.twig' => '/Users/sanofuzir/Sites/senio/src/Senio/CoreBundle/Resources/views/Default/email.html.twig',
   'CoreBundle:Default:index.html.twig' => '/Users/sanofuzir/Sites/senio/src/Senio/CoreBundle/Resources/views/Default/index.html.twig',
   'CoreBundle::layout.html.twig' => '/Users/sanofuzir/Sites/senio/src/Senio/CoreBundle/Resources/views/layout.html.twig',
   'WebProfilerBundle:Collector:config.html.twig' => '/Users/sanofuzir/Sites/senio/vendor/symfony/symfony/src/Symfony/Bundle/WebProfilerBundle/Resources/views/Collector/config.html.twig',

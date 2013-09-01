@@ -29,16 +29,4 @@
   </tbody>
 </table>
 
-<div id="chart-container"></div>
-
-<script type="text/javascript">
-    Highcharts.setOptions({% render 'gremo_highcharts:getOptions' %});
-
-    $(function() {
-        $(document).ready(function() {
-            new Highcharts.Chart({{ chart|raw }});
-        });
-    })(jQuery);;
-</script>
-
 {% endblock %}
