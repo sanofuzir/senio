@@ -1,0 +1,20 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    
+    <parameters>
+        <parameter key="senio.entity.questionnaire.class">senio\CoreBundle\Entity\Questionnaire</parameter>
+        <parameter key="senio.questionnaire_manager.class">senio\CoreBundle\Models\QuestionnaireManager</parameter>
+    </parameters>
+
+    <services>
+        <service id="senio.questionnaire_manager" class="%senio.questionnaire_manager.class%">
+            <argument type="service" id="doctrine.orm.entity_manager" />
+            <argument>%senio.entity.questionnaire.class%</argument>
+        </service>
+    </services>
+    
+</container>

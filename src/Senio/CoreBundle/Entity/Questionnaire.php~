@@ -1,0 +1,82 @@
+<?php
+
+namespace Senio\CoreBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+
+/**
+ * Questionnaire
+ *
+ * @ORM\Table(name="questionnaire")
+ * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Ecrf\CoreBundle\Entity\QuestionnaireRepository")
+ * @ORM\HasLifecycleCallbacks
+ */
+class Questionnaire 
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    protected $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column
+     * @Assert\NotBlank(
+     *     message = "To polje ne sme biti prazno!"
+     * )
+     * 
+     */
+    protected $name;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(length=3)
+     * @Assert\NotBlank(
+     *     message = "To polje ne sme biti prazno!"
+     * )
+     */
+    protected $surname;
+    
+    /**
+     * @var string
+     * @ORM\Column(length=255)
+     * @Assert\Email(
+     *     message = "Email ni veljaven!",
+     *     checkMX = true
+     * )
+     * @Assert\NotBlank(
+     *     message = "To polje ne sme biti prazno!"
+     * )
+     */
+    protected $email;
+    
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(type="datetime")
+     * @Assert\Date
+     * @Assert\NotBlank
+     */
+    protected $date_of_birth;
+    
+    /**
+    * @var string
+    *
+    * @ORM\Column(length=255)
+    * @Assert\NotBlank(
+    *   message = "To polje ne sme biti prazno!"
+    * )  
+    */
+    protected $browser;
+    
+}
